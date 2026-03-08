@@ -90,18 +90,20 @@ python main.py --chat
 All settings live in `config.py`:
 
 ```python
-BATCH_SIZE     = 32      # training batch size
-BLOCK_SIZE     = 128     # context window — higher = better memory, slower
-MAX_ITERS      = 3000    # training steps
+BATCH_SIZE     = 24      # training batch size
+BLOCK_SIZE     = 64      # context window — higher = better memory, slower
+MAX_ITERS      = 5000    # training steps
+EVAL_EVERY     = 1000    # evaluate the model every 'n'th itteration
 LEARN_RATE     = 8e-4    # learning rate
 N_EMBED        = 128     # embedding dimension
 N_HEAD         = 4       # attention heads
 N_LAYER        = 4       # transformer blocks
 DROPOUT        = 0.2     # regularization
 TEMPERATURE    = 0.8     # generation randomness
-TOP_K          = 30      # sampling pool size
-MAX_NEW_TOKENS = 80      # max response length
-
+DEVICE         = "cpu"   # the training device [chnage to "cuda" if you have a GPU]
+TEMPERATURE = 0.8        # controls randomness: higher (e.g., 1.0) is creative/diverse, lower (e.g., 0.2) is focused/deterministic
+TOP_K = 30               # limits next-token choices to the top 'k' most likely options to prevent nonsensical "long-tail" outputs
+MAX_NEW_TOKENS = 80      # the maximum number of tokens (words/characters) the model will generate in a single response
 ```
 
 ---
